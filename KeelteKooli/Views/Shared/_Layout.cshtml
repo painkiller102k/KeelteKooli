@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - KeelteKooli</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index","Home")">KeelteKooli</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @* Admin menu *@
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("Courses","Admin")">Courses</a></li>
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("Teachers","Admin")">Teachers</a></li>
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("Trainings","Admin")">Trainings</a></li>
+                        }
+                        @* Teacher menu *@
+                        else if (User.IsInRole("Opetaja"))
+                        {
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("Dashboard","Opetaja")">Dashboard</a></li>
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("Students","Opetaja")">My Students</a></li>
+                        }
+                        @* Student menu *@
+                        else if (User.IsInRole("Student"))
+                        {
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("MyTrainings","Student")">My Trainings</a></li>
+                            <li class="nav-item"><a class="nav-link" href="@Url.Action("Students","Student")">All Trainings</a></li>
+                        }
+                        <li class="nav-item">
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-link nav-link">Log Out</button>
+                            }
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Login","Account")">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("Register","Account")">Register</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        @RenderBody()
+    </div>
+
+    <footer class="bg-light text-center py-3 mt-4">
+        &copy; @DateTime.Now.Year - KeelteKooli
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

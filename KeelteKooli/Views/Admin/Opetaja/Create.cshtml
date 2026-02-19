@@ -1,0 +1,32 @@
+﻿@model KeelteKooli.Models.Teacher
+@{
+    ViewBag.Title = "Create Teacher";
+}
+
+<h2>Create Teacher</h2>
+
+@using (Html.BeginForm("CreateTeacher", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Nimi)
+        @Html.TextBoxFor(m => m.Nimi, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Kvalifikatsioon)
+        @Html.TextBoxFor(m => m.Kvalifikatsioon, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.FotoPath)
+        @Html.TextBoxFor(m => m.FotoPath, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.Label("Email for login")
+        <input type="email" name="Email" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        @Html.Label("Password for login")
+        <input type="password" name="Password" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+}

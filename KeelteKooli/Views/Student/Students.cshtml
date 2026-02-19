@@ -1,0 +1,31 @@
+﻿@model IEnumerable<KeelteKooli.Models.Training>
+
+<h2>Все тренинги</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Курс</th>
+            <th>Преподаватель</th>
+            <th>Начало</th>
+            <th>Конец</th>
+            <th>Цена</th>
+            <th>Действие</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>@t.Keelekursus.Nimetus</td>
+                <td>@t.Opetaja.Nimi</td>
+                <td>@t.AlgusKuupaev.ToString("dd.MM.yyyy")</td>
+                <td>@t.LoppKuupaev.ToString("dd.MM.yyyy")</td>
+                <td>@t.Hind</td>
+                <td>
+                    @Html.ActionLink("Записаться", "Register", "Student", new { trainingId = t.Id }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

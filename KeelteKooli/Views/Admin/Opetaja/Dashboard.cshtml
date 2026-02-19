@@ -1,0 +1,27 @@
+﻿@model IEnumerable<KeelteKooli.Models.Training>
+
+<h2>Мои тренинги</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Курс</th>
+            <th>Начало</th>
+            <th>Конец</th>
+            <th>Цена</th>
+            <th>Макс. участников</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>@t.Keelekursus.Nimetus</td>
+                <td>@t.AlgusKuupaev.ToString("dd.MM.yyyy")</td>
+                <td>@t.LoppKuupaev.ToString("dd.MM.yyyy")</td>
+                <td>@t.Hind</td>
+                <td>@t.MaxOsalejaid</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Keeltekooli.Models.Registration>
+
+<h2>Студенты курса</h2>
+
+<table class="table">
+    <tr>
+        <th>Email</th>
+        <th>Статус</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.User.Email</td>
+            <td>@item.Staatus</td>
+        </tr>
+    }
+</table>

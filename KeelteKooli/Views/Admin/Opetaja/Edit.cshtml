@@ -1,0 +1,25 @@
+﻿@model KeelteKooli.Models.Teacher
+@{
+    ViewBag.Title = "Edit Teacher";
+}
+
+<h2>Edit Teacher</h2>
+
+@using (Html.BeginForm("EditTeacher", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Nimi)
+        @Html.TextBoxFor(m => m.Nimi, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Kvalifikatsioon)
+        @Html.TextBoxFor(m => m.Kvalifikatsioon, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.FotoPath)
+        @Html.TextBoxFor(m => m.FotoPath, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+}

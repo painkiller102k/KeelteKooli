@@ -1,0 +1,23 @@
+﻿@model KeelteKooli.Models.Teacher
+@{
+    ViewBag.Title = "Delete Teacher";
+}
+
+<h2>Delete Teacher</h2>
+
+<p>Are you sure you want to delete this teacher?</p>
+
+<dl class="row">
+    <dt class="col-sm-2">Name</dt>
+    <dd class="col-sm-10">@Model.Nimi</dd>
+    <dt class="col-sm-2">Qualification</dt>
+    <dd class="col-sm-10">@Model.Kvalifikatsioon</dd>
+</dl>
+
+@using (Html.BeginForm("DeleteTeacherConfirmed", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a class="btn btn-secondary" href="@Url.Action("Teachers", "Admin")">Cancel</a>
+}

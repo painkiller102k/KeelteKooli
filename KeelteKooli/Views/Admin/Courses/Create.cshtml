@@ -1,0 +1,28 @@
+﻿@model KeelteKooli.Models.Course
+@{
+    ViewBag.Title = "Create Course";
+}
+
+<h2>Create Course</h2>
+
+@using (Html.BeginForm("CreateCourse", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Nimetus)
+        @Html.TextBoxFor(m => m.Nimetus, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Keel)
+        @Html.TextBoxFor(m => m.Keel, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Tase)
+        @Html.TextBoxFor(m => m.Tase, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Kirjeldus)
+        @Html.TextAreaFor(m => m.Kirjeldus, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+}

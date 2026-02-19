@@ -1,0 +1,36 @@
+﻿@model KeelteKooli.Models.Training
+@{
+    ViewBag.Title = "Create Training";
+}
+
+<h2>Create Training</h2>
+
+@using (Html.BeginForm("CreateTraining", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="mb-3">
+        @Html.LabelFor(m => m.KeelekursusId, "Course")
+        @Html.DropDownListFor(m => m.KeelekursusId, (SelectList)ViewBag.Courses, "-- Select Course --", new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.OpetajaId, "Teacher")
+        @Html.DropDownListFor(m => m.OpetajaId, (SelectList)ViewBag.Teachers, "-- Select Teacher --", new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.AlgusKuupaev)
+        @Html.TextBoxFor(m => m.AlgusKuupaev, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.LoppKuupaev)
+        @Html.TextBoxFor(m => m.LoppKuupaev, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.Hind)
+        @Html.TextBoxFor(m => m.Hind, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(m => m.MaxOsalejaid)
+        @Html.TextBoxFor(m => m.MaxOsalejaid, new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+}
