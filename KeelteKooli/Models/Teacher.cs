@@ -16,6 +16,6 @@ namespace KeelteKooli.Models
 
         [ForeignKey("ApplicationUserId")]
         public virtual ApplicationUser User { get; set; }
-        public string Email { get; internal set; }
+        public string Email { get; set; }
     }
 }

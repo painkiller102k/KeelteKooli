@@ -14,7 +14,7 @@
     <dd class="col-sm-10">@Model.Kvalifikatsioon</dd>
 </dl>
 
-@using (Html.BeginForm("DeleteTeacherConfirmed", "Admin", FormMethod.Post))
+@using (Html.BeginForm("DeleteTeacher", "Admin", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.Id)

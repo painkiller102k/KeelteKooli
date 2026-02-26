@@ -16,7 +16,7 @@
     <dd class="col-sm-10">@Model.Tase</dd>
 </dl>
 
-@using (Html.BeginForm("DeleteCourseConfirmed", "Admin", FormMethod.Post))
+@using (Html.BeginForm("DeleteCourse", "Admin", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.Id)
